@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post';
+import Header from './Header';
 
 const title = 'Post title';
 const subtitle = 'Post subtitle';
@@ -7,11 +8,13 @@ const subtitle = 'Post subtitle';
 function App() {
   return (
     <>
-      <h1>JStack's Blog</h1>
-      <h2>Post of the week</h2>
+      <Header>
+        <h2>Post of the week</h2>
+      </Header>
       <hr />
       
       <Post 
+        likes={20}
         post={
           {
             title,
@@ -20,6 +23,7 @@ function App() {
         }
       />
       <Post 
+        likes={10}
         post={
           {
             title,
@@ -28,6 +32,7 @@ function App() {
         }
       />
       <Post 
+        likes={50}
         post={
           {
             title,
