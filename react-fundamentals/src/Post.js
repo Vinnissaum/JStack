@@ -6,7 +6,9 @@ export default function Post(props) {
   return (
     <>
       <article>
-        <strong>{props.post.title}</strong><br />
+        <strong>{props.post.title}</strong>
+        <button onClick={() => props.onRemove(props.post.id)}>Remove</button>
+        <br />
         <small>{props.post.subtitle}</small><br />
         <small>likes: {props.likes}</small>
       </article>
@@ -17,7 +19,9 @@ export default function Post(props) {
 
 Post.propTypes = {
   likes: PropTypes.number.isRequired,
+  onRemove: PropTypes.func.isRequired,
   post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
   }).isRequired,
