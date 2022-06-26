@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Post from './Post';
 import Header from './Header';
-
-const title = 'Post title';
-const subtitle = 'Post subtitle';
+import { ThemeProvider } from './ThemeContext';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -31,7 +29,7 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Header>
         <h2>
           Post of the week 
@@ -47,7 +45,7 @@ function App() {
           post={post}
         />
       ))}
-    </>
+    </ThemeProvider>
   );
 }
 
