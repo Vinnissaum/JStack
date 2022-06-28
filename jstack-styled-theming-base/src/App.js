@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/global';
 import Layout from './components/Layout';
 import themes from './styles/themes';
+import { ThemeController } from './context/themeContext';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -14,11 +15,13 @@ function App() {
   }
   return (
     <ThemeProvider theme={currentTheme}>
-      <GlobalStyle />
-      <Layout 
+      <ThemeController 
         onToggleTheme={handleToggleTheme}
         selectedTheme={theme}  
-      />
+      >
+        <GlobalStyle />
+        <Layout />
+      </ThemeController>
     </ThemeProvider>
   );
 };
