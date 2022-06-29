@@ -1,12 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { ThemeController } from './context/themeContext';
+import useLocalState from './hooks/useLocalState';
 import GlobalStyle from './styles/global';
 import Layout from './components/Layout';
 import themes from './styles/themes';
-import { ThemeController } from './context/themeContext';
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useLocalState('themeKey', 'light');
 
   const currentTheme = useMemo(() => (themes[theme] || themes.dark), [theme]);
 
