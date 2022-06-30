@@ -1,9 +1,14 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Container } from './styles';
 
 
 export default class Post extends React.Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  };
+  
   render() {
     const { title, description } = this.props;
     
