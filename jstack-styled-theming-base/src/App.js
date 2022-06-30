@@ -7,15 +7,11 @@ import { ThemeContextProvider } from './context/themeContext';
 import themes from './styles/themes';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: 'dark',
-    };
+  state = {
+    theme: 'dark'
+  };
 
-    this.handleToggleTheme = this.handleToggleTheme.bind(this);
-  }
-  handleToggleTheme() {
+  handleToggleTheme = () => {
     this.setState(prevState => (
       {
         theme: prevState.theme === 'dark' ? 'light' : 'dark',
@@ -26,7 +22,7 @@ class App extends React.Component {
   render() {
     const { theme } = this.state;
     const currentThemeProps = (themes[theme] || themes.dark);
-
+    
     return (
       <ThemeContextProvider 
         onToggleTheme={this.handleToggleTheme}
