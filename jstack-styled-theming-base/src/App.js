@@ -6,25 +6,59 @@ import Layout from './components/Layout';
 import { ThemeContextProvider } from './context/themeContext';
 import themes from './styles/themes';
 
-function App() {
-  const [theme, setTheme] = useLocalState('theme', 'light');
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: 'dark',
+    };
 
-  const currentThemeProps = useMemo(() => (themes[theme] || themes.dark), [theme]);
-  
-  function handleToggleTheme() {
-    setTheme(prevState => prevState === 'dark' ? 'light' : 'dark');
+    this.handleToggleTheme = this.handleToggleTheme.bind(this);
   }
+  handleToggleTheme() {
+    this.setState(prevState => (
+      {
+        theme: prevState.theme === 'dark' ? 'light' : 'dark',
+      }
+    ));
+    }
 
-  return (
-    <ThemeContextProvider 
-      onToggleTheme={handleToggleTheme}
-      themeStatus={theme}
-      themeProps={currentThemeProps}
-    >
-      <GlobalStyle />
-      <Layout />
-    </ThemeContextProvider>
-  );
-};
+  render() {
+    const { theme } = this.state;
+    const currentThemeProps = (themes[theme] || themes.dark);
+
+    return (
+      <ThemeContextProvider 
+        onToggleTheme={this.handleToggleTheme}
+        themeStatus={theme}
+        themeProps={currentThemeProps}
+      >
+        <GlobalStyle />
+        <Layout />
+      </ThemeContextProvider>
+    );
+  }
+}
+
+// function App() {
+//   const [theme, setTheme] = useLocalState('theme', 'light');
+
+//   const currentThemeProps = useMemo(() => (themes[theme] || themes.dark), [theme]);
+  
+//   function handleToggleTheme() {
+//     setTheme(prevState => prevState === 'dark' ? 'light' : 'dark');
+//   }
+
+//   return (
+//     <ThemeContextProvider 
+//       onToggleTheme={handleToggleTheme}
+//       themeStatus={theme}
+//       themeProps={currentThemeProps}
+//     >
+//       <GlobalStyle />
+//       <Layout />
+//     </ThemeContextProvider>
+//   );
+// };
 
 export default App;
