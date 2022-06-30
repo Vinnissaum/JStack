@@ -1,30 +1,24 @@
-import React, { useMemo, createContext } from 'react';
+import React, { createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-
-import themes from '../styles/themes';
-import useLocalState from '../hooks/useLocalState';
 
 export const themeContext = createContext();
 
-export function ThemeContextProvider({ children }) {
-  const [theme, setTheme] = useLocalState('theme', 'light');
-
-  const currentTheme = useMemo(() => (themes[theme] || themes.dark), [theme]);
-
-  function handleToggleTheme() {
-    setTheme(prevState => prevState === 'dark' ? 'light' : 'dark');
-  }
-  
+export function ThemeContextProvider(
+  { children, 
+    onToggleTheme, 
+    themeStatus, 
+    themeProps 
+  }) {  
   return (
     <themeContext.Provider
      value={
       { 
-        onToggleTheme: handleToggleTheme,
-        selectedTheme: theme,
+        onToggleTheme,
+        selectedTheme: themeStatus,
       }
      }   
     >
-      <ThemeProvider theme={currentTheme}>
+      <ThemeProvider theme={themeProps}>
         {children}
       </ThemeProvider>
     </themeContext.Provider>
