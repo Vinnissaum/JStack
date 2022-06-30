@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import useLocalState from './hooks/useLocalState';
+import React from 'react';
 
 import GlobalStyle from './styles/global';
 import Layout from './components/Layout';
