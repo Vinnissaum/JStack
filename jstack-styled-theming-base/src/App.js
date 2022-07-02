@@ -2,9 +2,8 @@ import React from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
-import { themeContext, ThemeProvider } from './context/themeContext';
+import { ThemeContext, ThemeProvider } from './context/ThemeContext';
 import GlobalStyle from './styles/global';
-import themes from './styles/themes';
 
 class App extends React.Component {
   state = {
@@ -14,14 +13,14 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <themeContext.Consumer>
-          {({ selectedTheme }) => (
-            <StyledThemeProvider theme={ selectedTheme }>
+        <ThemeContext.Consumer>
+          {({ currentThemeProps }) => (
+            <StyledThemeProvider theme={ currentThemeProps }>
               <GlobalStyle />
               <Layout />
             </StyledThemeProvider>
           )}
-        </themeContext.Consumer>
+        </ThemeContext.Consumer>
       </ThemeProvider>
     );
   }

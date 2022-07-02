@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { themeContext } from '../../context/themeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { Container } from './styles';
 
 export default function Footer() {
-  const { onToggleTheme, theme } = useContext(themeContext);
+  const { onToggleTheme, selectedTheme } = useContext(ThemeContext);
   
   return (
     <Container>
@@ -12,7 +12,7 @@ export default function Footer() {
        type="button"
        onClick={onToggleTheme}
       >
-        {theme === 'dark' ? '🌞' : '🌚'}
+        {selectedTheme === 'dark' ? '🌞' : '🌚'}
       </button>
     </Container>
   );
