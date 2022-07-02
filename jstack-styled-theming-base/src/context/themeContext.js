@@ -1,26 +1,28 @@
-import React, { createContext } from 'react';
-import { ThemeProvider } from 'styled-components';
+import React, { createContext, useState } from 'react';
+
+import themes from '../styles/themes';
 
 export const themeContext = createContext();
 
-export function ThemeContextProvider(
-  { children, 
-    onToggleTheme, 
-    themeStatus, 
-    themeProps 
-  }) {  
+export function ThemeProvider({ children }) { 
+  const [theme, setTheme] = useState('light');
+  
+  function handleToggleTheme() {
+      setTheme(prevState => ( prevState === 'dark' ? 'light' : 'dark' ));
+    }
+
+  const currentThemeProps = (themes[theme] || themes.light);
   return (
     <themeContext.Provider
      value={
       { 
-        onToggleTheme,
-        selectedTheme: themeStatus,
+        theme,
+        onToggleTheme: handleToggleTheme,
+        selectedTheme: currentThemeProps
       }
      }   
     >
-      <ThemeProvider theme={themeProps}>
-        {children}
-      </ThemeProvider>
+      { children }
     </themeContext.Provider>
   );
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import GlobalStyle from './styles/global';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
-import { ThemeContextProvider } from './context/themeContext';
+import { themeContext, ThemeProvider } from './context/themeContext';
+import GlobalStyle from './styles/global';
 import themes from './styles/themes';
 
 class App extends React.Component {
@@ -10,27 +11,18 @@ class App extends React.Component {
     theme: 'dark'
   };
 
-  handleToggleTheme = () => {
-    this.setState(prevState => (
-      {
-        theme: prevState.theme === 'dark' ? 'light' : 'dark',
-      }
-    ));
-    }
-
   render() {
-    const { theme } = this.state;
-    const currentThemeProps = (themes[theme] || themes.dark);
-    
     return (
-      <ThemeContextProvider 
-        onToggleTheme={this.handleToggleTheme}
-        themeStatus={theme}
-        themeProps={currentThemeProps}
-      >
-        <GlobalStyle />
-        <Layout />
-      </ThemeContextProvider>
+      <ThemeProvider>
+        <themeContext.Consumer>
+          {({ selectedTheme }) => (
+            <StyledThemeProvider theme={ selectedTheme }>
+              <GlobalStyle />
+              <Layout />
+            </StyledThemeProvider>
+          )}
+        </themeContext.Consumer>
+      </ThemeProvider>
     );
   }
 }

@@ -3,7 +3,7 @@ import { themeContext } from '../../context/themeContext';
 import { Container } from './styles';
 
 export default function Footer() {
-  const { onToggleTheme, selectedTheme } = useContext(themeContext);
+  const { onToggleTheme, theme } = useContext(themeContext);
   
   return (
     <Container>
@@ -12,7 +12,7 @@ export default function Footer() {
        type="button"
        onClick={onToggleTheme}
       >
-        {selectedTheme === 'dark' ? '🌞' : '🌚'}
+        {theme === 'dark' ? '🌞' : '🌚'}
       </button>
     </Container>
   );

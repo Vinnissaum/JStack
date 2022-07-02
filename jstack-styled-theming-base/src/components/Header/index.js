@@ -3,7 +3,7 @@ import { themeContext } from '../../context/themeContext';
 import { Container } from './styles';
 
 export default function Header() {
-  const { onToggleTheme, selectedTheme } = useContext(themeContext);
+  const { onToggleTheme, theme } = useContext(themeContext);
   
   return (
     <Container>
@@ -12,7 +12,7 @@ export default function Header() {
         type="button"
         onClick={onToggleTheme}
       >
-        {selectedTheme === 'dark' ? '🌞' : '🌚'}
+        {theme === 'dark' ? '🌞' : '🌚'}
       </button>
     </Container>
   );
