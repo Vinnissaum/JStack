@@ -6,10 +6,6 @@ import { ThemeContext, ThemeProvider } from './context/ThemeContext';
 import GlobalStyle from './styles/global';
 
 class App extends React.Component {
-  state = {
-    theme: 'dark'
-  };
-
   render() {
     return (
       <ThemeProvider>
