@@ -35,7 +35,7 @@ export class ThemeProvider extends React.Component {
         {
           selectedTheme: theme,
           onToggleTheme: this.handleToggleTheme,
-          currentThemeProps
+          currentThemeProps,
         }
       }
       >

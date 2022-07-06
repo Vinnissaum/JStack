@@ -3,7 +3,7 @@ import { BrowserRouter, Link } from "react-router-dom";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import Route from "../../Routes";
+import Routes from "../../Routes";
 import { Nav } from "./styles";
 
 export default function Layout() {
@@ -15,7 +15,7 @@ export default function Layout() {
         <Link to="/posts">Posts</Link>
         <Link to="/posts/25365423">Post</Link>
       </Nav>
-      <Route />
+      <Routes />
       <Footer />
     </BrowserRouter>
   );
