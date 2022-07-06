@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Nav = styled.nav`
   background: #000;
@@ -6,9 +6,9 @@ export const Nav = styled.nav`
   padding: 16px;
   border-radius: 4px;
 
-  a { 
+  a {
     display: inline-block;
-    color: #FFF;
+    color: #fff;
     text-decoration: none;
 
     & + a {
