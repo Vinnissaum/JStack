@@ -1,15 +1,15 @@
 import React from 'react';
 
 import Header from '../Header';
-import PostsList from '../PostsList';
 import Footer from '../Footer';
+import Route from '../../Routes';
 
 export default function Layout() {
   return (
     <>
       <Header />
-      <PostsList />
-      <Footer />
+      <Route />
+      <Footer /> 
     </>
   );
 }
